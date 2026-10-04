@@ -1,43 +1,4 @@
-# part_head_css.py - HTML head, CDNs e CSS completo do Dashboard SPA (Estética Sogeking)
-HTML_HEAD_CSS = '''<!DOCTYPE html>
-<html lang="pt-BR">
-<!--
-================================================================================
-SMART HOME IoT SIMULATOR 3D (TUYA + ZIGBEE 3.0)
-Executive SPA Dashboard • Estética Editorial Sogeking:
-- Fundo Clean Off-White (#F6F7F9 / #FFFFFF)
-- Tipografia Editorial de Alto Contraste (Outfit + Plus Jakarta Sans + JetBrains Mono)
-- Acento Assinatura: Azul Elétrico Royal (#0038FF)
-- Bordas Finas Nítidas (1px solid #E5E7EB), Cantos Arredondados e Pílulas (999px)
-- Layout SPA Focado no Protagonismo da Planta 3D e Abas Funcionais
-================================================================================
--->
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Home IoT Simulator 3D • Tuya + Zigbee 3.0</title>
-  <meta name="description" content="Simulador 3D interativo de casa inteligente (Tuya + Zigbee 3.0) com telemetria em tempo real e injeção de falhas.">
-
-  <!-- Google Fonts: Outfit (Display & Títulos), Plus Jakarta Sans (UI Geral), JetBrains Mono (Telemetria) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Three.js 0.160.0 via importmap -->
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-    }
-  }
-  </script>
-
-  <!-- Chart.js 4.4.1 (UMD) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-  <style>
-    /* ==========================================================================
+/* ==========================================================================
        DESIGN SYSTEM • VARIÁVEIS GLOBAIS (ESTÉTICA SOGEKING)
        ========================================================================== */
     :root {
@@ -471,19 +432,15 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
     .filter-pills-row {
       display: flex;
       align-items: center;
-      gap: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-    }
-    .filter-pills-row::-webkit-scrollbar {
-      display: none;
+      gap: 4px 6px;
+      flex-wrap: wrap;
+      padding: 2px 0 2px 0;
     }
     .filter-pill {
       background: var(--bg-card-subtle);
       border: 1px solid var(--border-color);
       border-radius: 999px;
-      padding: 2px 8px;
+      padding: 2.5px 8px;
       font-size: 10px;
       font-weight: 700;
       color: var(--text-muted);
@@ -500,6 +457,93 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       background: var(--electric-blue);
       border-color: var(--electric-blue);
       color: #FFFFFF;
+    }
+
+    /* Caixa de Legenda de Siglas dos Sensores (CT, PL, PIR, etc.) */
+    .sidebar-siglas-box {
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .siglas-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .siglas-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--text-black);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .siglas-hint {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .siglas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .sigla-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 3px 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+      min-width: 0;
+    }
+    .sigla-badge:hover {
+      border-color: var(--electric-blue);
+      background: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 56, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    .sigla-code {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 9.5px;
+      color: var(--electric-blue);
+      background: var(--electric-blue-tint);
+      padding: 1px 4px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .sigla-desc {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .device-room-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .dev-type-badge {
+      font-size: 9px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
     /* Lista Colunar de Cards de Dispositivos */
@@ -1702,6 +1746,3 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       border-radius: 999px;
       background: var(--electric-blue);
     }
-  </style>
-</head>
-'''

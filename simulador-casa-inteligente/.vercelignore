@@ -1,0 +1,23 @@
+# Binários e arquivos da aplicação Electron Antigravity
+antigravity
+chrome-sandbox
+chrome_crashpad_handler
+*.pak
+*.bin
+*.so*
+*.dat
+locales/
+resources/
+LICENSE*
+LICENSES*
+vk_swiftshader_icd.json
+
+# Ferramentas de desenvolvimento e scripts locais
+scripts/
+scratch/
+__pycache__/
+*.py
+*.sh
+.git/
+.gitignore
+simulador-casa-inteligente/
