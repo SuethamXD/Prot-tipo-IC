@@ -38,8 +38,11 @@ with open(css_path, "w", encoding="utf-8") as f:
 print(f"Sucesso: {css_path} ({len(css_content)} bytes)")
 
 # 2. Extração dos Módulos JS
+import re
+
 def clean_module(raw):
     s = raw.replace('<script type="module">', '').replace('</script>', '').replace('</body>', '').replace('</html>', '')
+    s = re.sub(r'<!--.*?-->', '', s, flags=re.DOTALL)
     return s.strip()
 
 modules = {

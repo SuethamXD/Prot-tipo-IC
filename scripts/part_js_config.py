@@ -1,6 +1,5 @@
 # part_js_config.py - CONFIG, EventBus, SimClock e HouseModel
-JS_CONFIG = '''  <!-- JAVASCRIPT PRINCIPAL (ES2022 MODULE) -->
-  <script type="module">
+JS_CONFIG = '''  <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
