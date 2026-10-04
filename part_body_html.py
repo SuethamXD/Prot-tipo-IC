@@ -89,7 +89,7 @@ HTML_BODY = '''<body>
         </div>
 
         <div class="sidebar-search-box">
-          <input type="text" id="input-device-search" class="search-input" placeholder="Buscar dispositivo, cômodo ou ID...">
+          <input type="text" id="input-device-search" class="search-input" placeholder="Buscar dispositivo, cômodo ou ID (CT, PL...)...">
           <div class="filter-pills-row">
             <span class="filter-pill active" data-filter="all">Todos</span>
             <span class="filter-pill" data-filter="zigbee">Zigbee</span>
@@ -98,6 +98,40 @@ HTML_BODY = '''<body>
             <span class="filter-pill" data-filter="mcs">Porta</span>
             <span class="filter-pill" data-filter="cz">Tomada</span>
             <span class="filter-pill" data-filter="dj">Luz</span>
+          </div>
+
+          <!-- Legenda Informativa das Siglas dos Dispositivos (CT, PL, PIR, etc.) -->
+          <div class="sidebar-siglas-box">
+            <div class="siglas-header">
+              <span class="siglas-title">🏷️ Legenda das Siglas</span>
+              <span class="siglas-hint">Clique para filtrar</span>
+            </div>
+            <div class="siglas-grid">
+              <span class="sigla-badge" data-sigla="CT" title="CT: Sensor de Contato / Abertura de Porta e Janela (Contact Sensor)">
+                <span class="sigla-code">CT</span>
+                <span class="sigla-desc">Contato (Porta)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="PL" title="PL: Tomada Inteligente com Medição de Energia (Power Plug)">
+                <span class="sigla-code">PL</span>
+                <span class="sigla-desc">Tomada (Plugue)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="PIR" title="PIR: Sensor de Presença Infravermelho Passivo (Passive Infrared)">
+                <span class="sigla-code">PIR</span>
+                <span class="sigla-desc">Presença (PIR)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="BL" title="BL: Lâmpada Inteligente / Iluminação (Bulb / Light)">
+                <span class="sigla-code">BL</span>
+                <span class="sigla-desc">Lâmpada (Bulb)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="CM" title="CM: Motor de Cortina Inteligente (Curtain Motor)">
+                <span class="sigla-code">CM</span>
+                <span class="sigla-desc">Cortina (Motor)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="HUB" title="HUB: Gateway Zigbee 3.0 / Coordenador da Rede">
+                <span class="sigla-code">HUB</span>
+                <span class="sigla-desc">Gateway Zigbee</span>
+              </span>
+            </div>
           </div>
         </div>
 

@@ -470,19 +470,15 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
     .filter-pills-row {
       display: flex;
       align-items: center;
-      gap: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 2px;
-    }
-    .filter-pills-row::-webkit-scrollbar {
-      display: none;
+      gap: 4px 6px;
+      flex-wrap: wrap;
+      padding: 2px 0 2px 0;
     }
     .filter-pill {
       background: var(--bg-card-subtle);
       border: 1px solid var(--border-color);
       border-radius: 999px;
-      padding: 2px 8px;
+      padding: 2.5px 8px;
       font-size: 10px;
       font-weight: 700;
       color: var(--text-muted);
@@ -499,6 +495,93 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       background: var(--electric-blue);
       border-color: var(--electric-blue);
       color: #FFFFFF;
+    }
+
+    /* Caixa de Legenda de Siglas dos Sensores (CT, PL, PIR, etc.) */
+    .sidebar-siglas-box {
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .siglas-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .siglas-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--text-black);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .siglas-hint {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .siglas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .sigla-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 3px 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+      min-width: 0;
+    }
+    .sigla-badge:hover {
+      border-color: var(--electric-blue);
+      background: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 56, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    .sigla-code {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 9.5px;
+      color: var(--electric-blue);
+      background: var(--electric-blue-tint);
+      padding: 1px 4px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .sigla-desc {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .device-room-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .dev-type-badge {
+      font-size: 9px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
     /* Lista Colunar de Cards de Dispositivos */
@@ -1793,7 +1876,7 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
         </div>
 
         <div class="sidebar-search-box">
-          <input type="text" id="input-device-search" class="search-input" placeholder="Buscar dispositivo, cômodo ou ID...">
+          <input type="text" id="input-device-search" class="search-input" placeholder="Buscar dispositivo, cômodo ou ID (CT, PL...)...">
           <div class="filter-pills-row">
             <span class="filter-pill active" data-filter="all">Todos</span>
             <span class="filter-pill" data-filter="zigbee">Zigbee</span>
@@ -1802,6 +1885,40 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
             <span class="filter-pill" data-filter="mcs">Porta</span>
             <span class="filter-pill" data-filter="cz">Tomada</span>
             <span class="filter-pill" data-filter="dj">Luz</span>
+          </div>
+
+          <!-- Legenda Informativa das Siglas dos Dispositivos (CT, PL, PIR, etc.) -->
+          <div class="sidebar-siglas-box">
+            <div class="siglas-header">
+              <span class="siglas-title">🏷️ Legenda das Siglas</span>
+              <span class="siglas-hint">Clique para filtrar</span>
+            </div>
+            <div class="siglas-grid">
+              <span class="sigla-badge" data-sigla="CT" title="CT: Sensor de Contato / Abertura de Porta e Janela (Contact Sensor)">
+                <span class="sigla-code">CT</span>
+                <span class="sigla-desc">Contato (Porta)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="PL" title="PL: Tomada Inteligente com Medição de Energia (Power Plug)">
+                <span class="sigla-code">PL</span>
+                <span class="sigla-desc">Tomada (Plugue)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="PIR" title="PIR: Sensor de Presença Infravermelho Passivo (Passive Infrared)">
+                <span class="sigla-code">PIR</span>
+                <span class="sigla-desc">Presença (PIR)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="BL" title="BL: Lâmpada Inteligente / Iluminação (Bulb / Light)">
+                <span class="sigla-code">BL</span>
+                <span class="sigla-desc">Lâmpada (Bulb)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="CM" title="CM: Motor de Cortina Inteligente (Curtain Motor)">
+                <span class="sigla-code">CM</span>
+                <span class="sigla-desc">Cortina (Motor)</span>
+              </span>
+              <span class="sigla-badge" data-sigla="HUB" title="HUB: Gateway Zigbee 3.0 / Coordenador da Rede">
+                <span class="sigla-code">HUB</span>
+                <span class="sigla-desc">Gateway Zigbee</span>
+              </span>
+            </div>
           </div>
         </div>
 
@@ -5006,6 +5123,18 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
           });
         }
 
+        // Clique nas Siglas para Filtrar Rapidamente (CT, PL, PIR, etc.)
+        for (const badge of document.querySelectorAll(".sigla-badge")) {
+          badge.addEventListener("click", (e) => {
+            const sigla = e.currentTarget.getAttribute("data-sigla");
+            const searchInput = document.getElementById("input-device-search");
+            if (searchInput) {
+              searchInput.value = (searchInput.value === sigla) ? "" : sigla;
+              this.renderInventory();
+            }
+          });
+        }
+
         // Navegação de Abas (inclui aba de Notificações)
         for (const btn of document.querySelectorAll(".tab-btn")) {
           btn.addEventListener("click", (e) => {
@@ -5251,7 +5380,7 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
         let visibleCount = 0;
 
         for (const dev of window.allDevices) {
-          if (query && !dev.name.toLowerCase().includes(query) && !dev.room.toLowerCase().includes(query)) continue;
+          if (query && !dev.name.toLowerCase().includes(query) && !dev.room.toLowerCase().includes(query) && !dev.id.toLowerCase().includes(query)) continue;
           if (activeFilter === "zigbee" && dev.protocol !== "zigbee") continue;
           if (activeFilter === "wifi" && dev.protocol !== "wifi") continue;
           if (activeFilter === "pir" && dev.category !== "pir") continue;
@@ -5267,12 +5396,26 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
           if (dev.category === "wg2") protoClass = "proto-hub";
           else if (dev.protocol === "zigbee") protoClass = "proto-zigbee";
 
+          // Identificação da sigla no card
+          let siglaDesc = "";
+          if (dev.id.startsWith("CT")) siglaDesc = "🚪 Contato (Porta)";
+          else if (dev.id.startsWith("PL")) siglaDesc = "🔌 Tomada (Plugue)";
+          else if (dev.id.startsWith("PIR")) siglaDesc = "🚶 Presença (PIR)";
+          else if (dev.id.startsWith("BL")) siglaDesc = "💡 Lâmpada (Bulb)";
+          else if (dev.id.startsWith("CM")) siglaDesc = "🪟 Cortina (Motor)";
+          else if (dev.id.startsWith("HUB")) siglaDesc = "🌐 Gateway";
+          else if (dev.id.startsWith("CAM")) siglaDesc = "📹 Câmera";
+          else if (dev.id.startsWith("RTR")) siglaDesc = "📡 Roteador";
+
           card.innerHTML = `
             <div class="device-card-header">
               <span class="device-name">${dev.name}</span>
               <span class="proto-badge ${protoClass}">${dev.protocol}</span>
             </div>
-            <div class="device-room">${dev.room}</div>
+            <div class="device-room-row">
+              <span class="device-room">${dev.room}</span>
+              ${siglaDesc ? `<span class="dev-type-badge">${siglaDesc}</span>` : ""}
+            </div>
             <div class="device-metrics">
               <span class="metric-item">🔋 <span class="metric-val">${dev.hasBattery ? Math.round(dev.battery) + "%" : "AC"}</span></span>
               <span class="metric-item">📶 <span class="metric-val">${dev.rssi} dBm</span></span>

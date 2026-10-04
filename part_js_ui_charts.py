@@ -132,6 +132,18 @@ JS_UI_CHARTS = '''    /* =======================================================
           });
         }
 
+        // Clique nas Siglas para Filtrar Rapidamente (CT, PL, PIR, etc.)
+        for (const badge of document.querySelectorAll(".sigla-badge")) {
+          badge.addEventListener("click", (e) => {
+            const sigla = e.currentTarget.getAttribute("data-sigla");
+            const searchInput = document.getElementById("input-device-search");
+            if (searchInput) {
+              searchInput.value = (searchInput.value === sigla) ? "" : sigla;
+              this.renderInventory();
+            }
+          });
+        }
+
         // Navegação de Abas (inclui aba de Notificações)
         for (const btn of document.querySelectorAll(".tab-btn")) {
           btn.addEventListener("click", (e) => {
@@ -377,7 +389,7 @@ JS_UI_CHARTS = '''    /* =======================================================
         let visibleCount = 0;
 
         for (const dev of window.allDevices) {
-          if (query && !dev.name.toLowerCase().includes(query) && !dev.room.toLowerCase().includes(query)) continue;
+          if (query && !dev.name.toLowerCase().includes(query) && !dev.room.toLowerCase().includes(query) && !dev.id.toLowerCase().includes(query)) continue;
           if (activeFilter === "zigbee" && dev.protocol !== "zigbee") continue;
           if (activeFilter === "wifi" && dev.protocol !== "wifi") continue;
           if (activeFilter === "pir" && dev.category !== "pir") continue;
@@ -393,12 +405,26 @@ JS_UI_CHARTS = '''    /* =======================================================
           if (dev.category === "wg2") protoClass = "proto-hub";
           else if (dev.protocol === "zigbee") protoClass = "proto-zigbee";
 
+          // Identificação da sigla no card
+          let siglaDesc = "";
+          if (dev.id.startsWith("CT")) siglaDesc = "🚪 Contato (Porta)";
+          else if (dev.id.startsWith("PL")) siglaDesc = "🔌 Tomada (Plugue)";
+          else if (dev.id.startsWith("PIR")) siglaDesc = "🚶 Presença (PIR)";
+          else if (dev.id.startsWith("BL")) siglaDesc = "💡 Lâmpada (Bulb)";
+          else if (dev.id.startsWith("CM")) siglaDesc = "🪟 Cortina (Motor)";
+          else if (dev.id.startsWith("HUB")) siglaDesc = "🌐 Gateway";
+          else if (dev.id.startsWith("CAM")) siglaDesc = "📹 Câmera";
+          else if (dev.id.startsWith("RTR")) siglaDesc = "📡 Roteador";
+
           card.innerHTML = `
             <div class="device-card-header">
               <span class="device-name">${dev.name}</span>
               <span class="proto-badge ${protoClass}">${dev.protocol}</span>
             </div>
-            <div class="device-room">${dev.room}</div>
+            <div class="device-room-row">
+              <span class="device-room">${dev.room}</span>
+              ${siglaDesc ? `<span class="dev-type-badge">${siglaDesc}</span>` : ""}
+            </div>
             <div class="device-metrics">
               <span class="metric-item">🔋 <span class="metric-val">${dev.hasBattery ? Math.round(dev.battery) + "%" : "AC"}</span></span>
               <span class="metric-item">📶 <span class="metric-val">${dev.rssi} dBm</span></span>
