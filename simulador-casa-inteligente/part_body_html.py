@@ -65,6 +65,7 @@ HTML_BODY = '''<body>
 
       <!-- Ações do Lado Direito -->
       <div class="header-right-actions">
+        <button id="btn-start-tour" class="btn-pill-tour" title="Guia Interativo da Iniciação Científica (Tuya + Zigbee)">🎓 Guia Interativo</button>
         <button id="btn-toggle-edit" class="btn-pill-outline" title="Modo Edição (E)">Modo Edição</button>
         <button id="btn-reset-sim" class="btn-pill-black" title="Reiniciar Simulação">Reiniciar 🔄</button>
       </div>
@@ -584,6 +585,47 @@ HTML_BODY = '''<body>
             <button id="btn-confirm-add-device" class="btn-pill-black">Confirmar Adição</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Guia Interativo da Iniciação Científica (Tuya, Zigbee & Extração de Dados) -->
+    <div id="tour-card" class="tour-card" style="display:none;">
+      <div class="tour-card-header">
+        <div class="tour-header-left">
+          <span class="tour-badge" id="tour-step-badge">Passo 1 de 12</span>
+          <span class="tour-section-tag" id="tour-section-tag">1.1 Plataforma Tuya</span>
+        </div>
+        <button id="btn-close-tour" class="tour-close-btn" title="Encerrar Guia (Esc)">&times;</button>
+      </div>
+
+      <div class="tour-progress-bar-container">
+        <div id="tour-progress-fill" class="tour-progress-bar-fill"></div>
+      </div>
+
+      <div class="tour-card-body">
+        <div class="tour-title-row">
+          <span id="tour-icon" class="tour-icon">🏛️</span>
+          <div class="tour-title-wrap">
+            <h3 id="tour-title" class="tour-title">As 4 Camadas da Plataforma Tuya</h3>
+            <p id="tour-subtitle" class="tour-subtitle">Visão conceitual da arquitetura PaaS e ecossistema</p>
+          </div>
+        </div>
+
+        <div id="tour-content" class="tour-content-scroll">
+          <!-- Conteúdo pedagógico dinâmico injetado via TourController -->
+        </div>
+
+        <div id="tour-action-box" class="tour-action-box" style="display:none;">
+          <!-- Ação interativa (ex: botão Focar no Sensor, Simular Evento, etc.) -->
+        </div>
+      </div>
+
+      <div class="tour-card-footer">
+        <button id="btn-tour-prev" class="btn-pill-outline btn-tour-nav" title="Passo Anterior (←)">◀ Anterior</button>
+        <div class="tour-step-indicators" id="tour-dots-container">
+          <!-- Dots de navegação rápida clicáveis -->
+        </div>
+        <button id="btn-tour-next" class="btn-pill-black btn-tour-nav" title="Próximo Passo (→)">Próximo ▶</button>
       </div>
     </div>
 

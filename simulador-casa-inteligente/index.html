@@ -1451,9 +1451,255 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       border-left-color: var(--accent-red);
       background: #FEF2F2;
     }
-    @keyframes toastSlideIn {
-      from { opacity: 0; transform: translateY(6px) scale(0.96); }
+    /* ==========================================================================
+       BOTAO DO GUIA INTERATIVO (HEADER)
+       ========================================================================== */
+    .btn-pill-tour {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border: 1px solid var(--electric-blue);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      white-space: nowrap;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 56, 255, 0.25);
+    }
+    .btn-pill-tour:hover {
+      background: #002ECC;
+      border-color: #002ECC;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 56, 255, 0.35);
+    }
+    .btn-pill-tour.active {
+      background: var(--accent-emerald);
+      border-color: var(--accent-emerald);
+    }
+
+    /* ==========================================================================
+       GUIA INTERATIVO DA INICIAÇÃO CIENTÍFICA (MODAL FLUTUANTE)
+       ========================================================================== */
+    .tour-card {
+      position: fixed;
+      bottom: 24px;
+      left: 330px;
+      width: 480px;
+      max-width: calc(100vw - 360px);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--text-black);
+      border-radius: 16px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 1;
+      animation: tourCardSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes tourCardSlideUp {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .tour-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-light);
+      background: #FAF8F5;
+    }
+    .tour-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tour-badge {
+      background: var(--text-black);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .tour-section-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--electric-blue);
+      font-family: var(--font-mono);
+    }
+    .tour-close-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .tour-close-btn:hover {
+      color: var(--accent-red);
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .tour-progress-bar-container {
+      width: 100%;
+      height: 3px;
+      background: var(--border-light);
+    }
+    .tour-progress-bar-fill {
+      height: 100%;
+      background: var(--electric-blue);
+      width: 8.33%;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tour-card-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 340px;
+    }
+    .tour-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .tour-icon {
+      font-size: 24px;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+    .tour-title-wrap {
+      flex: 1;
+    }
+    .tour-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-black);
+      margin: 0;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .tour-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin: 2px 0 0 0;
+      line-height: 1.3;
+    }
+    .tour-content-scroll {
+      overflow-y: auto;
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: #374151;
+      padding-right: 4px;
+      scrollbar-width: thin;
+      max-height: 200px;
+    }
+    .tour-content-scroll p {
+      margin: 0 0 8px 0;
+    }
+    .tour-content-scroll ul {
+      margin: 4px 0 8px 16px;
+      padding: 0;
+    }
+    .tour-content-scroll li {
+      margin-bottom: 4px;
+    }
+    .tour-callout {
+      background: #F3F4F6;
+      border-left: 3.5px solid var(--electric-blue);
+      padding: 8px 10px;
+      border-radius: 0 8px 8px 0;
+      font-size: 11px;
+      margin: 8px 0;
+      color: var(--text-black);
+    }
+    .tour-callout.warning {
+      border-left-color: var(--accent-amber);
+      background: #FFFDF5;
+    }
+    .tour-code-box {
+      background: #111827;
+      color: #F9FAFB;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin: 8px 0;
+      overflow-x: auto;
+    }
+    .tour-action-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border-light);
+    }
+    .tour-btn-action {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-black);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .tour-btn-action:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border-color: var(--electric-blue);
+    }
+    .tour-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #FAF8F5;
+      border-top: 1px solid var(--border-light);
+    }
+    .btn-tour-nav {
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .tour-step-indicators {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tour-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tour-dot:hover {
+      background: var(--text-black);
+    }
+    .tour-dot.active {
+      width: 14px;
+      border-radius: 999px;
+      background: var(--electric-blue);
     }
   </style>
 </head>
@@ -1523,6 +1769,7 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
 
       <!-- Ações do Lado Direito -->
       <div class="header-right-actions">
+        <button id="btn-start-tour" class="btn-pill-tour" title="Guia Interativo da Iniciação Científica (Tuya + Zigbee)">🎓 Guia Interativo</button>
         <button id="btn-toggle-edit" class="btn-pill-outline" title="Modo Edição (E)">Modo Edição</button>
         <button id="btn-reset-sim" class="btn-pill-black" title="Reiniciar Simulação">Reiniciar 🔄</button>
       </div>
@@ -2042,6 +2289,47 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
             <button id="btn-confirm-add-device" class="btn-pill-black">Confirmar Adição</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Guia Interativo da Iniciação Científica (Tuya, Zigbee & Extração de Dados) -->
+    <div id="tour-card" class="tour-card" style="display:none;">
+      <div class="tour-card-header">
+        <div class="tour-header-left">
+          <span class="tour-badge" id="tour-step-badge">Passo 1 de 12</span>
+          <span class="tour-section-tag" id="tour-section-tag">1.1 Plataforma Tuya</span>
+        </div>
+        <button id="btn-close-tour" class="tour-close-btn" title="Encerrar Guia (Esc)">&times;</button>
+      </div>
+
+      <div class="tour-progress-bar-container">
+        <div id="tour-progress-fill" class="tour-progress-bar-fill"></div>
+      </div>
+
+      <div class="tour-card-body">
+        <div class="tour-title-row">
+          <span id="tour-icon" class="tour-icon">🏛️</span>
+          <div class="tour-title-wrap">
+            <h3 id="tour-title" class="tour-title">As 4 Camadas da Plataforma Tuya</h3>
+            <p id="tour-subtitle" class="tour-subtitle">Visão conceitual da arquitetura PaaS e ecossistema</p>
+          </div>
+        </div>
+
+        <div id="tour-content" class="tour-content-scroll">
+          <!-- Conteúdo pedagógico dinâmico injetado via TourController -->
+        </div>
+
+        <div id="tour-action-box" class="tour-action-box" style="display:none;">
+          <!-- Ação interativa (ex: botão Focar no Sensor, Simular Evento, etc.) -->
+        </div>
+      </div>
+
+      <div class="tour-card-footer">
+        <button id="btn-tour-prev" class="btn-pill-outline btn-tour-nav" title="Passo Anterior (←)">◀ Anterior</button>
+        <div class="tour-step-indicators" id="tour-dots-container">
+          <!-- Dots de navegação rápida clicáveis -->
+        </div>
+        <button id="btn-tour-next" class="btn-pill-black btn-tour-nav" title="Próximo Passo (→)">Próximo ▶</button>
       </div>
     </div>
 
@@ -4762,6 +5050,11 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
           this.clearNotifications();
         });
 
+        // Botão Iniciar Guia Interativo
+        document.getElementById("btn-start-tour")?.addEventListener("click", () => {
+          if (window.Tour) window.Tour.toggleTour();
+        });
+
         // Rolagem horizontal dos botões do cabeçalho via roda do mouse (wheel)
         const headerCenterControls = document.querySelector(".header-center-controls");
         if (headerCenterControls) {
@@ -5410,6 +5703,455 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       }
     }
     const UI = new UIController();
+
+    /* ==========================================================================
+       14.2 TOUR CONTROLLER - GUIA INTERATIVO DA INICIAÇÃO CIENTÍFICA
+       Baseado no documento oficial: Tuya, Zigbee e dados para modelos (8 páginas)
+       ========================================================================== */
+    class TourController {
+      constructor() {
+        this.currentStep = 0;
+        this.active = false;
+        this.steps = this.buildSteps();
+        this.init();
+      }
+
+      init() {
+        document.getElementById("btn-tour-prev")?.addEventListener("click", () => this.prevStep());
+        document.getElementById("btn-tour-next")?.addEventListener("click", () => this.nextStep());
+        document.getElementById("btn-close-tour")?.addEventListener("click", () => this.endTour());
+
+        window.addEventListener("keydown", (e) => {
+          if (!this.active) return;
+          if (e.key === "Escape") this.endTour();
+          else if (e.key === "ArrowRight") this.nextStep();
+          else if (e.key === "ArrowLeft") this.prevStep();
+        });
+      }
+
+      toggleTour() {
+        if (this.active) {
+          this.endTour();
+        } else {
+          this.startTour(0);
+        }
+      }
+
+      startTour(stepIndex = 0) {
+        this.active = true;
+        document.getElementById("btn-start-tour")?.classList.add("active");
+        const card = document.getElementById("tour-card");
+        if (card) card.style.display = "flex";
+        this.renderStep(stepIndex);
+      }
+
+      endTour() {
+        this.active = false;
+        document.getElementById("btn-start-tour")?.classList.remove("active");
+        const card = document.getElementById("tour-card");
+        if (card) card.style.display = "none";
+        document.getElementById("device-detail-modal")?.classList.remove("active");
+        if (window.UI) {
+          window.UI.showDiscreetToast("Guia concluído. Modo de exploração livre ativo!", "info", 1800);
+        }
+      }
+
+      goToStep(index) {
+        if (index < 0 || index >= this.steps.length) return;
+        this.renderStep(index);
+      }
+
+      nextStep() {
+        if (this.currentStep < this.steps.length - 1) {
+          this.goToStep(this.currentStep + 1);
+        } else {
+          this.endTour();
+        }
+      }
+
+      prevStep() {
+        if (this.currentStep > 0) {
+          this.goToStep(this.currentStep - 1);
+        }
+      }
+
+      renderStep(index) {
+        this.currentStep = index;
+        const step = this.steps[index];
+
+        const badge = document.getElementById("tour-step-badge");
+        if (badge) badge.textContent = `Passo ${index + 1} de ${this.steps.length}`;
+        const tag = document.getElementById("tour-section-tag");
+        if (tag) tag.textContent = step.section;
+        const icon = document.getElementById("tour-icon");
+        if (icon) icon.textContent = step.icon;
+        const title = document.getElementById("tour-title");
+        if (title) title.textContent = step.title;
+        const subtitle = document.getElementById("tour-subtitle");
+        if (subtitle) subtitle.textContent = step.subtitle;
+        const content = document.getElementById("tour-content");
+        if (content) content.innerHTML = step.content;
+
+        const progressPct = ((index + 1) / this.steps.length) * 100;
+        const fill = document.getElementById("tour-progress-fill");
+        if (fill) fill.style.width = `${progressPct}%`;
+
+        const btnPrev = document.getElementById("btn-tour-prev");
+        if (btnPrev) {
+          btnPrev.disabled = index === 0;
+          btnPrev.style.opacity = index === 0 ? "0.4" : "1";
+          btnPrev.style.pointerEvents = index === 0 ? "none" : "auto";
+        }
+
+        const btnNext = document.getElementById("btn-tour-next");
+        if (btnNext) {
+          btnNext.textContent = index === this.steps.length - 1 ? "Concluir 🏆" : "Próximo ▶";
+        }
+
+        // Renderiza dots de navegação rápida
+        const dotsContainer = document.getElementById("tour-dots-container");
+        if (dotsContainer) {
+          dotsContainer.innerHTML = "";
+          this.steps.forEach((_, i) => {
+            const dot = document.createElement("div");
+            dot.className = `tour-dot ${i === index ? "active" : ""}`;
+            dot.title = `Ir para Passo ${i + 1}: ${this.steps[i].title}`;
+            dot.addEventListener("click", () => this.goToStep(i));
+            dotsContainer.appendChild(dot);
+          });
+        }
+
+        // Ação interativa do passo
+        const actionBox = document.getElementById("tour-action-box");
+        if (actionBox) {
+          if (step.actionText && step.onAction) {
+            actionBox.style.display = "flex";
+            actionBox.innerHTML = `<button class="tour-btn-action" id="btn-tour-step-action">${step.actionText}</button>`;
+            document.getElementById("btn-tour-step-action")?.addEventListener("click", () => {
+              step.onAction();
+            });
+          } else {
+            actionBox.style.display = "none";
+            actionBox.innerHTML = "";
+          }
+        }
+
+        // Executa setup interativo do passo
+        if (typeof step.setup === "function") {
+          try {
+            step.setup();
+          } catch (e) {
+            console.warn("Erro no setup do tour:", e);
+          }
+        }
+      }
+
+      buildSteps() {
+        return [
+          {
+            section: "1.1 Plataforma Tuya",
+            icon: "🏛️",
+            title: "As 4 Camadas da Plataforma Tuya",
+            subtitle: "Visão holística da arquitetura IoT em nuvem (PaaS)",
+            content: `
+              <p>A <strong>Tuya</strong> é uma plataforma IoT em nuvem (PaaS). A maioria dos dispositivos "Smart Life / Tuya Smart" de marcas diferentes (JWCOM, Luminolândia, DMO etc.) compartilham o mesmo ecossistema com marcas brancas.</p>
+              <ul>
+                <li><strong>1. Dispositivo Físico:</strong> sensor ou atuador com módulo de rádio (Wi-Fi, Zigbee, BLE) executando firmware Tuya.</li>
+                <li><strong>2. Nuvem Tuya:</strong> autentica dispositivos, armazena estado atual, roteia comandos, executa automações e expõe APIs.</li>
+                <li><strong>3. App Smart Life / Tuya Smart:</strong> interface para o usuário final parear, controlar e criar cenas.</li>
+                <li><strong>4. Tuya IoT Platform (iot.tuya.com):</strong> portal de desenvolvedores onde se cria o Cloud Project, obtêm-se credenciais e se extraem dados programaticamente.</li>
+              </ul>
+              <div class="tour-callout"><strong>💡 No Simulador:</strong> A planta 3D representa o ambiente físico completo integrado à nuvem Tuya e ao Hub Zigbee central.</div>
+            `,
+            actionText: "🔭 Visão Panorâmica da Casa",
+            onAction: () => {
+              if (window.SceneBuilder) window.SceneBuilder.setCameraView("perspective");
+            },
+            setup: () => {
+              if (window.SceneBuilder) window.SceneBuilder.setCameraView("perspective");
+              const wallSelect = document.getElementById("select-wall-mode");
+              if (wallSelect) {
+                wallSelect.value = "cut";
+                wallSelect.dispatchEvent(new Event("change"));
+              }
+            }
+          },
+          {
+            section: "Cotação da IC",
+            icon: "📦",
+            title: "Itens Selecionados & Dispositivos Físicos",
+            subtitle: "Sensores e atuadores prioritários selecionados para o laboratório",
+            content: `
+              <p>Após descartar itens inviáveis, a cotação oficial da IC selecionou os seguintes componentes ativos:</p>
+              <ul>
+                <li><strong>Abertura:</strong> Sensor porta/janela Tuya Wi-Fi (JWCOM) e versão Zigbee.</li>
+                <li><strong>Movimento:</strong> Sensores PIR Wi-Fi e PIR Zigbee (com tempo de cooldown e lux).</li>
+                <li><strong>Energia:</strong> Tomadas 20A com medidor (cur_power, cur_voltage, cur_current) e tomadas 10A.</li>
+                <li><strong>Hub:</strong> Gateway Zigbee 3.0 coordenador (cabeado Ethernet ou sem fio).</li>
+                <li><strong>Atuadores:</strong> Motor de cortina (posição em %) e Lâmpadas inteligentes CCT.</li>
+              </ul>
+              <div class="tour-callout"><strong>💡 No Simulador:</strong> O inventário lateral esquerdo agrupa os 39 dispositivos com busca em tempo real.</div>
+            `,
+            actionText: "🔍 Filtrar Sensores PIR de Presença",
+            onAction: () => {
+              const pill = document.querySelector(".filter-pill[data-filter='pir']");
+              if (pill) pill.click();
+            },
+            setup: () => {
+              const pillAll = document.querySelector(".filter-pill[data-filter='all']");
+              if (pillAll) pillAll.click();
+            }
+          },
+          {
+            section: "1.2 Modelo de Dados",
+            icon: "🏷️",
+            title: "Data Points (DP): O Conceito Mais Importante",
+            subtitle: "Como cada sensor e atuador é descrito na plataforma",
+            content: `
+              <p>Todo dispositivo Tuya é modelado por um conjunto de <strong>Data Points (DP)</strong>. Na prática científica, <em>dados do sensor = fluxo de eventos de DPs com timestamp</em>.</p>
+              <ul>
+                <li><strong>ID Numérico & Code Textual:</strong> Ex.: DP 1 (<code>doorcontact_state</code>), DP 19 (<code>cur_power</code>), DP 1 (<code>pir</code>).</li>
+                <li><strong>Tipos de Dados:</strong> <code>bool</code> (aberto/fechado), <code>value</code> (inteiro com escala), <code>enum</code> (pir/none), <code>string</code>, <code>raw</code>.</li>
+                <li><strong>Modo de Acesso:</strong> <code>ro</code> (só reporta), <code>rw</code> (reporta e aceita comandos), <code>wr</code>.</li>
+              </ul>
+              <div class="tour-callout"><strong>💡 Exemplo Real:</strong> Sensor de porta reporta <code>{"doorcontact_state": true, "battery_percentage": 98}</code>.</div>
+            `,
+            actionText: "📋 Inspecionar DPs do Sensor CT-05",
+            onAction: () => {
+              const dev = window.allDevices?.find(d => d.id === "CT-05");
+              if (dev && window.UI) window.UI.selectDevice(dev);
+            },
+            setup: () => {
+              const dev = window.allDevices?.find(d => d.id === "CT-05");
+              if (dev && window.UI) window.UI.selectDevice(dev);
+            }
+          },
+          {
+            section: "4.1 Topologia Zigbee",
+            icon: "🕸️",
+            title: "Rede Zigbee 3.0 em Malha (IEEE 802.15.4)",
+            subtitle: "Coordenador, Routers e End Devices no ecossistema residencial",
+            content: `
+              <p>O Zigbee opera na frequência de 2,4 GHz (canais 11 a 26) com topologia <strong>mesh</strong> (malha), garantindo alcance e robustez:</p>
+              <ul>
+                <li><strong>Coordenador (Hub/Gateway):</strong> Cria a rede, escolhe canal e PAN ID, distribui chaves criptográficas AES-128. É a ponte com a nuvem.</li>
+                <li><strong>Routers:</strong> Dispositivos ligados à tomada (lâmpadas e tomadas Zigbee) que retransmitem pacotes, estendendo o sinal.</li>
+                <li><strong>End Devices:</strong> Sensores a bateria (PIR, portas). Dormem a maior parte do tempo e se comunicam através do pai mais próximo.</li>
+              </ul>
+              <div class="tour-callout warning"><strong>⚠️ Ponto da IC:</strong> As tomadas Wi-Fi <em>não</em> participam da malha Zigbee. Para reforçar o alcance, prefira lâmpadas ou tomadas Zigbee.</div>
+            `,
+            actionText: "⚡ Focar no Hub & Malha RF 3D",
+            onAction: () => {
+              document.getElementById("btn-toggle-mesh")?.classList.add("active");
+              if (window.SceneBuilder) window.SceneBuilder.setCameraView("free");
+            },
+            setup: () => {
+              document.getElementById("device-detail-modal")?.classList.remove("active");
+              const btnMesh = document.getElementById("btn-toggle-mesh");
+              if (btnMesh && !btnMesh.classList.contains("active")) btnMesh.click();
+            }
+          },
+          {
+            section: "1.4 & 4.3 Operação",
+            icon: "🔋",
+            title: "Sensores a Bateria & Cluster 0xEF00",
+            subtitle: "Sleep agressivo, reporte sob demanda e empacotamento Tuya",
+            content: `
+              <p>Sensores a bateria possuem características técnicas determinantes para a pesquisa:</p>
+              <ul>
+                <li><strong>Sono Profundo:</strong> Eles ficam dormindo e <strong>não aceitam consulta local</strong>. Você só os "ouve" quando eles acordam e transmitem um evento.</li>
+                <li><strong>Tempo de Bloqueio (Cooldown):</strong> Sensores PIR têm bloqueio de 30s a alguns minutos após detecção para poupar bateria. Isso indica <em>início de presença</em>, não duração contínua.</li>
+                <li><strong>Cluster Proprietário (0xEF00):</strong> Sensores Zigbee Tuya empacotam DPs em um cluster fechado, exigindo conversores caso use Zigbee2MQTT.</li>
+              </ul>
+              <div class="tour-callout"><strong>💡 No Simulador:</strong> Ative pacotes voando e veja a rota física do sensor até o Hub!</div>
+            `,
+            actionText: "📡 Disparar Evento & Pacote no Ar",
+            onAction: () => {
+              const pir = window.allDevices?.find(d => d.id === "PIR-01");
+              if (pir) pir.trigger();
+            },
+            setup: () => {
+              const btnPackets = document.getElementById("btn-toggle-packets");
+              if (btnPackets && !btnPackets.classList.contains("active")) btnPackets.click();
+            }
+          },
+          {
+            section: "4.4 & 5 Coexistência",
+            icon: "📶",
+            title: "Wi-Fi x Zigbee: Coexistência e Canais 2.4GHz",
+            subtitle: "Como evitar interferências de rádio e otimizar a infraestrutura",
+            content: `
+              <p>Wi-Fi e Zigbee compartilham a banda de 2,4 GHz. Para mitigar colisões e perdas de pacotes na residência:</p>
+              <ul>
+                <li><strong>Alocação de Canais:</strong> Use Wi-Fi nos canais <strong>1, 6 ou 11</strong> e Zigbee nos canais <strong>15, 20, 25 ou 26</strong> (canais com menor sobreposição espectral).</li>
+                <li><strong>Posicionamento Físico:</strong> Mantenha o Hub a mais de 1 metro de distância do roteador Wi-Fi e de fornos micro-ondas.</li>
+                <li><strong>SSID Dedicado:</strong> Crie um SSID exclusivo de 2,4 GHz para IoT, sem <em>band steering</em> e sem isolamento de clientes (AP Isolation).</li>
+              </ul>
+              <div class="tour-callout"><strong>⚖️ Veredito da IC:</strong> Para bateria, Zigbee vence (dura 1 a 2 anos vs meses no Wi-Fi). Para medição de energia constante, Wi-Fi é ideal.</div>
+            `,
+            actionText: "📶 Abrir Aba de Métricas de Rede",
+            onAction: () => {
+              document.querySelector(".tab-btn[data-tab='tab-network']")?.click();
+            },
+            setup: () => {
+              document.querySelector(".tab-btn[data-tab='tab-network']")?.click();
+            }
+          },
+          {
+            section: "2.1 Nuvem Tuya",
+            icon: "☁️",
+            title: "Extração de Dados: Caminho Nuvem Oficial",
+            subtitle: "Tuya IoT Platform, OpenAPI e Push WebSocket Message Service",
+            content: `
+              <p>A extração oficial via nuvem utiliza a <strong>Tuya IoT Platform (iot.tuya.com)</strong>:</p>
+              <ul>
+                <li><strong>Autenticação:</strong> Requisições OpenAPI autenticadas com <em>Access ID</em>, <em>Access Secret</em> e assinatura criptográfica HMAC-SHA256.</li>
+                <li><strong>Pull (Polling):</strong> Consultar estado atual periodicamente consome cotas de chamadas e gera lacunas nos dados.</li>
+                <li><strong>Push (Message Service):</strong> O <strong>método correto para a IC</strong>. A Tuya empurra os eventos em tempo real via WebSocket/Pulsar.</li>
+              </ul>
+              <div class="tour-callout warning"><strong>⚠️ Regra de Ouro da IC:</strong> A Tuya NÃO é seu banco de dados. Os logs expiram rápido e as cotas são limitadas. Você deve gravar os dados em banco próprio desde o primeiro dia!</div>
+            `,
+            actionText: "🌐 Abrir API Explorer da Nuvem",
+            onAction: () => {
+              document.querySelector(".tab-btn[data-tab='tab-cloud']")?.click();
+            },
+            setup: () => {
+              document.querySelector(".tab-btn[data-tab='tab-cloud']")?.click();
+            }
+          },
+          {
+            section: "2.2 Controle Local",
+            icon: "⚡",
+            title: "Extração Local (LAN) & Interconexão Lógica",
+            subtitle: "TinyTuya, localKey e por que os dispositivos não conversam entre si",
+            content: `
+              <p>Existem dois princípios arquiteturais fundamentais revelados na pesquisa:</p>
+              <ul>
+                <li><strong>Comunicação Local (LAN):</strong> Dispositivos de rede elétrica aceitam conexão TCP na porta <code>6668</code> com a <code>localKey</code> (usando <em>TinyTuya</em>), garantindo baixíssima latência e independência de internet.</li>
+                <li><strong>Interconexão Lógica:</strong> Dispositivos Tuya <strong>NÃO conversam entre si diretamente</strong>. Cada um é cliente independente. Toda a correlação e inteligência deve rodar no seu coletor próprio (Python / Home Assistant).</li>
+              </ul>
+              <div class="tour-code-box">import tinytuya<br>d = tinytuya.Device("DEV_ID", "192.168.1.50", "LOCAL_KEY", version=3.3)<br>print(d.status()) # {'dps': {'1': True, '19': 230}}</div>
+            `,
+            actionText: "🔌 Ver Arquitetura de Coleta",
+            onAction: () => {
+              document.querySelector(".tab-btn[data-tab='tab-pipeline']")?.click();
+            },
+            setup: () => {
+              document.querySelector(".tab-btn[data-tab='tab-pipeline']")?.click();
+            }
+          },
+          {
+            section: "6.0 Energia & NILM",
+            icon: "📈",
+            title: "Tomadas 20A com Medidor & NILM",
+            subtitle: "Reconhecimento de aparelhos por assinatura de potência e segurança",
+            content: `
+              <p>As tomadas inteligentes com medição de energia são uma das fontes mais ricas de dados da pesquisa:</p>
+              <ul>
+                <li><strong>Telemetria Disponível:</strong> Potência instantânea (Watts), Tensão (V), Corrente (mA) e Consumo Acumulado (kWh).</li>
+                <li><strong>NILM (Non-Intrusive Load Monitoring):</strong> Modelos de ML capazes de inferir qual aparelho foi ligado (geladeira, lavadora, TV, micro-ondas) pela assinatura de consumo.</li>
+                <li><strong>Intervalo de Reporte:</strong> Muitas tomadas só enviam dados quando a variação ultrapassa um limiar estipulado.</li>
+              </ul>
+              <div class="tour-callout warning"><strong>🚨 Segurança Crítica:</strong> NUNCA permita que um LLM ou rotina automática desligue tomadas de cargas vitais (geladeira com perecíveis, equipamentos médicos).</div>
+            `,
+            actionText: "📊 Expandir Gaveta de Gráficos de Potência",
+            onAction: () => {
+              const drawer = document.getElementById("bottom-drawer");
+              if (drawer && drawer.classList.contains("collapsed")) {
+                document.getElementById("drawer-handle-bar")?.click();
+              }
+            },
+            setup: () => {
+              const drawer = document.getElementById("bottom-drawer");
+              if (drawer && drawer.classList.contains("collapsed")) {
+                document.getElementById("drawer-handle-bar")?.click();
+              }
+            }
+          },
+          {
+            section: "3.2 & 7.1 Pipeline",
+            icon: "🔬",
+            title: "O Pipeline de Dados para Machine Learning",
+            subtitle: "Normalização JSON, Séries Temporais, Janelas de Tempo e Ground Truth",
+            content: `
+              <p>Para transformar eventos em ciência reprodutível, seguimos a arquitetura da Seção 3.2:</p>
+              <ul>
+                <li><strong>1. Ingestão & Normalização:</strong> Eventos padronizados em JSON imutável com duplo timestamp (chegada no coletor vs evento Tuya para calcular latência).</li>
+                <li><strong>2. Armazenamento Imutável:</strong> Banco de séries temporais (InfluxDB / TimescaleDB) + arquivos brutos versionados (Parquet/CSV).</li>
+                <li><strong>3. Engenharia de Atributos:</strong> Janelas temporais (5 min, 1h), contagem de eventos por cômodo, tempo desde último movimento e potência média.</li>
+                <li><strong>4. Rótulos (Ground Truth):</strong> Diário de atividades reais dos moradores para treinar modelos supervisionados (ou datasets públicos como CASAS).</li>
+              </ul>
+              <div class="tour-callout"><strong>💡 No Simulador:</strong> O banco IndexedDB local já grava todos os eventos normalizados. Você pode exportar CSV, JSON e JSONL agora mesmo!</div>
+            `,
+            actionText: "💾 Ver Dados Gravados no IndexedDB",
+            onAction: () => {
+              document.querySelector(".tab-btn[data-tab='tab-events']")?.click();
+            },
+            setup: () => {
+              document.querySelector(".tab-btn[data-tab='tab-events']")?.click();
+            }
+          },
+          {
+            section: "7.2 Papel dos LLMs",
+            icon: "🤖",
+            title: "A Verdade sobre LLMs na Casa Inteligente",
+            subtitle: "Onde Modelos de Linguagem fazem sentido e onde falham redondamente",
+            content: `
+              <p>Um dos pontos conceituais mais lúcidos da apostila de Iniciação Científica:</p>
+              <ul>
+                <li><strong>O que NÃO fazer:</strong> LLMs <em>não</em> são a melhor ferramenta para modelar séries temporais numéricas de sensores! Métodos clássicos (XGBoost, Random Forest, HMM, LSTM) superam LLMs com muito menos dados e menor custo computacional.</li>
+                <li><strong>Onde o LLM Brilha:</strong>
+                  <ul>
+                    <li><strong>Interface & Orquestração:</strong> Receber resumo textual do estado da casa e usar <em>Function Calling / Tool Use</em> para acionar APIs.</li>
+                    <li><strong>Explicação de Rotinas:</strong> Traduzir padrões encontrados pelos modelos matemáticos em explicações em linguagem natural.</li>
+                    <li><strong>Geração de Regras:</strong> Sugerir automações validadas por humanos.</li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="tour-callout"><strong>🛡️ Camada de Segurança:</strong> Deve sempre haver um validador determinístico com regras rígidas entre a saída do LLM e os atuadores da casa.</div>
+            `,
+            actionText: "🤖 Inspecionar Resumo para LLM",
+            onAction: () => {
+              document.querySelector(".tab-btn[data-tab='tab-pipeline']")?.click();
+              document.getElementById("llm-state-summary")?.scrollIntoView({ behavior: "smooth" });
+            },
+            setup: () => {
+              document.querySelector(".tab-btn[data-tab='tab-pipeline']")?.click();
+            }
+          },
+          {
+            section: "8.0 Roteiro da IC",
+            icon: "🏆",
+            title: "Roteiro da Pesquisa & Próximos Passos",
+            subtitle: "Da Prova de Conceito digital à implementação física no laboratório",
+            content: `
+              <p>Parabéns! Você completou o Guia Técnico Interativo da Iniciação Científica. O roadmap da pesquisa se divide em 5 fases:</p>
+              <ul>
+                <li><strong>Fase 0 (Atual):</strong> Perguntas de pesquisa, planta da casa com posicionamento dos sensores e metadados (validado com sucesso neste simulador!).</li>
+                <li><strong>Fase 1:</strong> Aquisição do Hub Zigbee + 1 sensor prioritário de cada tipo para validar o fluxo ponta a ponta na nuvem Tuya.</li>
+                <li><strong>Fase 2:</strong> Implementação do coletor Python + InfluxDB + Grafana, medindo latência e perda de pacotes.</li>
+                <li><strong>Fase 3:</strong> Coleta contínua de semanas de dados com diário de rotinas e treino dos primeiros modelos de inferência (NILM e Presença).</li>
+                <li><strong>Fase 4:</strong> Automações determinísticas e integração com LLM como orquestrador via Function Calling.</li>
+              </ul>
+              <div class="tour-callout"><strong>🎓 Conclusão:</strong> Este simulador serve como material de ensino vivo e Prova de Conceito (PoC) para sua pesquisa!</div>
+            `,
+            actionText: "🎉 Concluir Guia & Explorar Livremente",
+            onAction: () => {
+              this.endTour();
+            },
+            setup: () => {
+              const drawer = document.getElementById("bottom-drawer");
+              if (drawer && !drawer.classList.contains("collapsed")) {
+                document.getElementById("drawer-handle-bar")?.click();
+              }
+              document.querySelector(".tab-btn[data-tab='tab-notifications']")?.click();
+            }
+          }
+        ];
+      }
+    }
+    const Tour = new TourController();
+    window.Tour = Tour;
 
     /* ==========================================================================
        15. CHARTS - GRÁFICOS EM TEMPO REAL COM CHART.JS (UMD)

@@ -1452,9 +1452,255 @@ Executive SPA Dashboard • Estética Editorial Sogeking:
       border-left-color: var(--accent-red);
       background: #FEF2F2;
     }
-    @keyframes toastSlideIn {
-      from { opacity: 0; transform: translateY(6px) scale(0.96); }
+    /* ==========================================================================
+       BOTAO DO GUIA INTERATIVO (HEADER)
+       ========================================================================== */
+    .btn-pill-tour {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border: 1px solid var(--electric-blue);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      white-space: nowrap;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 56, 255, 0.25);
+    }
+    .btn-pill-tour:hover {
+      background: #002ECC;
+      border-color: #002ECC;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 56, 255, 0.35);
+    }
+    .btn-pill-tour.active {
+      background: var(--accent-emerald);
+      border-color: var(--accent-emerald);
+    }
+
+    /* ==========================================================================
+       GUIA INTERATIVO DA INICIAÇÃO CIENTÍFICA (MODAL FLUTUANTE)
+       ========================================================================== */
+    .tour-card {
+      position: fixed;
+      bottom: 24px;
+      left: 330px;
+      width: 480px;
+      max-width: calc(100vw - 360px);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--text-black);
+      border-radius: 16px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 1;
+      animation: tourCardSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes tourCardSlideUp {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .tour-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-light);
+      background: #FAF8F5;
+    }
+    .tour-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tour-badge {
+      background: var(--text-black);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .tour-section-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--electric-blue);
+      font-family: var(--font-mono);
+    }
+    .tour-close-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .tour-close-btn:hover {
+      color: var(--accent-red);
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .tour-progress-bar-container {
+      width: 100%;
+      height: 3px;
+      background: var(--border-light);
+    }
+    .tour-progress-bar-fill {
+      height: 100%;
+      background: var(--electric-blue);
+      width: 8.33%;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tour-card-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 340px;
+    }
+    .tour-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .tour-icon {
+      font-size: 24px;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+    .tour-title-wrap {
+      flex: 1;
+    }
+    .tour-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-black);
+      margin: 0;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .tour-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin: 2px 0 0 0;
+      line-height: 1.3;
+    }
+    .tour-content-scroll {
+      overflow-y: auto;
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: #374151;
+      padding-right: 4px;
+      scrollbar-width: thin;
+      max-height: 200px;
+    }
+    .tour-content-scroll p {
+      margin: 0 0 8px 0;
+    }
+    .tour-content-scroll ul {
+      margin: 4px 0 8px 16px;
+      padding: 0;
+    }
+    .tour-content-scroll li {
+      margin-bottom: 4px;
+    }
+    .tour-callout {
+      background: #F3F4F6;
+      border-left: 3.5px solid var(--electric-blue);
+      padding: 8px 10px;
+      border-radius: 0 8px 8px 0;
+      font-size: 11px;
+      margin: 8px 0;
+      color: var(--text-black);
+    }
+    .tour-callout.warning {
+      border-left-color: var(--accent-amber);
+      background: #FFFDF5;
+    }
+    .tour-code-box {
+      background: #111827;
+      color: #F9FAFB;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin: 8px 0;
+      overflow-x: auto;
+    }
+    .tour-action-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border-light);
+    }
+    .tour-btn-action {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-black);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .tour-btn-action:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border-color: var(--electric-blue);
+    }
+    .tour-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #FAF8F5;
+      border-top: 1px solid var(--border-light);
+    }
+    .btn-tour-nav {
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .tour-step-indicators {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tour-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tour-dot:hover {
+      background: var(--text-black);
+    }
+    .tour-dot.active {
+      width: 14px;
+      border-radius: 999px;
+      background: var(--electric-blue);
     }
   </style>
 </head>
