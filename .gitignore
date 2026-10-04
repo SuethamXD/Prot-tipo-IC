@@ -1,0 +1,17 @@
+# Binários do Electron / App
+antigravity
+chrome-sandbox
+chrome_crashpad_handler
+*.pak
+*.bin
+*.so*
+*.dat
+locales/
+resources/
+LICENSE*
+LICENSES*
+vk_swiftshader_icd.json
+
+# Cache & Scratch
+__pycache__/
+scratch/
